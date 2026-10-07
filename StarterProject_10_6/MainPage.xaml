@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StarterProject_10_6.MainPage">
+
+    <!-- ================================================================
+         STYLE LAB  —  30 minutes
+
+         One page. Five menu rows. Every single look is typed in by
+         hand, and the numbers do not quite agree with each other.
+
+         Run it first. It looks almost fine, which is the problem.
+
+         TASK 1  (10 min)  An implicit Label style.
+                 In the Resources block below, add a
+                 <Style TargetType="Label"> with NO x:Key.
+                 Give it a FontSize and a TextColor.
+                 Then delete those attributes from the five item names.
+                 Run it. All five should now match.
+
+         TASK 2  (10 min)  Name your colours.
+                 Add <Color x:Key="Price">#B3261E</Color>.
+                 Use it with TextColor="{StaticResource Price}" on all
+                 five prices. Two of them are currently wrong — find
+                 out which by fixing them.
+
+         TASK 3  (10 min)  A named style for the prices.
+                 <Style TargetType="Label" x:Key="PriceText"> with a
+                 size, bold, and your Price colour.
+                 Apply it with Style="{StaticResource PriceText}".
+
+         DONE EARLY?  Count how many hard-coded numbers are left on
+         this page. Can you get it to three?
+         ================================================================ -->
+
+    <ContentPage.Resources>
+     <Color x:Key="Price">#B3261E</Color>
+
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="17" />
+            <Setter Property="TextColor" Value="#23232B" />
+        </Style>
+
+        <Style TargetType="Label" x:Key="PriceText" BasedOn="{StaticResource {x:Type Label}}">
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="TextColor" Value="{StaticResource Price}" />
+        </Style>
+
+    </ContentPage.Resources>
+
+    <VerticalStackLayout Padding="24" Spacing="18">
+
+        <Label Text="Breakfast Menu"
+               FontSize="30"
+               FontAttributes="Bold"
+               TextColor="#23232B" />
+
+        <!-- ROW 1 -->
+        <Grid ColumnDefinitions="*,Auto">
+            <!-- Item 1 -->
+            <Label Grid.Column="0" Text="Plain Bagel"/>
+            <!-- Price 1 -->
+            <Label Grid.Column="1" Text="$2.25" Style="{StaticResource PriceText}"/>
+        </Grid>
+
+        <!-- ROW 2 -->
+        <Grid ColumnDefinitions="*,Auto">
+            <!-- Item 2 -->
+            <Label Grid.Column="0" Text="Chicken Sandwich" />
+            <!-- Price 2 -->
+            <Label Grid.Column="1" Text="$6.49" Style="{StaticResource PriceText}" />
+        </Grid>
+
+        <!-- ROW 3 -->
+        <Grid ColumnDefinitions="*,Auto">
+            <!-- Item 3 -->
+            <Label Grid.Column="0" Text="Hash Brown" />
+            <!-- Price 3 -->
+            <Label Grid.Column="1" Text="$1.95" Style="{StaticResource PriceText}" />
+        </Grid>
+
+
+
+    </VerticalStackLayout>
+
+</ContentPage>
